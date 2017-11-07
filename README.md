@@ -13,5 +13,6 @@
 <hr>
 <h3>How to Use:</h3>
 <p>It just easy as drinking cup of tea :D ,<br><p>
-<p>Only you need to import it as like here "<span style='background:#F0F4C3'><font color='blue'>from</font> phpy <font color='blue'>import</font>
- phpy</span>"</p>
+<p>Only you need to import it as like here :<br></p>
+ <span style='background:#F0F4C3'><font color='blue'>from</font> phpy <font color='blue'>import</font>
+ phpy</span>
