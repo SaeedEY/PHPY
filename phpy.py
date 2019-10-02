@@ -196,6 +196,10 @@ def urldecode(enurl):
         print()
     return urllib.parse.unquote(enurl)
 
+
+def bin2hex(text):
+    return ''.join(hex(ord(c)) for c in text).replace('0x','')
+=======
 def decbin(num):
     """
     Converts a decimal number(num) to binary
@@ -247,4 +251,5 @@ def dechex(num):
         return hex(int(num))[2:].upper()
     except:
         raise ValueError("Expected a Number as input")
+
 
