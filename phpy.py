@@ -196,3 +196,6 @@ def urldecode(enurl):
         print()
     return urllib.parse.unquote(enurl)
 
+def bin2hex(text):
+    return ''.join(hex(ord(c)) for c in text).replace('0x','')
+
