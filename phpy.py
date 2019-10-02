@@ -196,3 +196,55 @@ def urldecode(enurl):
         print()
     return urllib.parse.unquote(enurl)
 
+def decbin(num):
+    """
+    Converts a decimal number(num) to binary
+    
+    Parameters
+    ----------
+    num : int or string
+
+    Returns
+    -------
+    integer denoting value of decimal number in binary format.
+    """
+    try:
+        return bin(int(num))[2:]
+    except:
+        raise ValueError("Expected a Number as input")
+
+def decoct():
+    """
+    Converts a decimal number(num) to octal i.e. base 8.
+    
+    Parameters
+    ----------
+    num : int or string
+
+    Returns
+    -------
+    integer denoting value of decimal number in octal format.
+    """
+    try:
+        return oct(int(num))[2:]
+    except:
+        raise ValueError("Expected a Number as input")
+
+def dechex(num):
+    """
+    Converts a decimal number(num) to hexadecimal ie base 16
+    
+    Parameters
+    ----------
+    num : int or string
+
+    Returns
+    -------
+    integer denoting value of decimal number in hex format.
+    """
+    try:
+        # returning upper because php does that.
+        return hex(int(num))[2:].upper()
+    except:
+        raise ValueError("Expected a Number as input")
+
