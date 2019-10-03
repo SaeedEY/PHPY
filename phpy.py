@@ -51,6 +51,9 @@ def time():
 def explode(delimiter,string):
     return str(string).split(delimiter)
 
+def implode(glue,pieces):
+    return glue.join(pieces)
+
 def strtolower(string):
     return lower(string)
 
