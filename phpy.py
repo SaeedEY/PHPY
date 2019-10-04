@@ -256,3 +256,74 @@ def dechex(num):
         raise ValueError("Expected a Number as input")
 
 
+def str_replace(string, value, new_value, occurences = -1):
+    """
+    Replaces the value of `value` to `new_value` in `string`. 
+    If occurences is defined, will only replace the first n occurences. A negative value replaces all values. 
+    """
+
+    return string.replace(value, new_value, occurences)
+
+def trim(string, trim_chars = None):
+    """
+    Strips all whitespace characters from the beginning and end of the `string`. If `trim_chars` is set, instead of whitespace, will replace only those characters. 
+    """
+    return string.strip(trim_chars)
+
+def strpos(string, search_val, offset = 0):
+    """
+    Returns the position of `search_val` in `string`, or False if it doesn't exist. If `offset` is defined, will start looking if `search_val` exists after the `offset`. 
+    """
+    try:
+        return string[offset:].index(search_val) + offset
+    except ValueError: 
+        return False
+
+def strstr(string, search_val):
+    """
+    Searches string for `search_val` and if found, returns all characters from there onwards. Returns false if `search_val` is not found. 
+    """
+    str_index = strpos(string, search_val)
+    if not str_index: return False
+    return string[str_index:]
+
+def is_string(val):
+    return type(val) == str
+
+def is_array(val):
+    return type(val) == list
+
+def in_array(l, val):
+    return l in val
+
+def array_unique(l):
+    """
+    Removes all duplicates from `l`. 
+    """
+    return list(set(l))
+
+def array_search(l, val):
+    """
+    Returns the index of `val` in `l`. 
+    """
+    try:
+        return l.index(val)
+    except ValueError:
+        return False
+
+def array_reverse(l):
+    """
+    Reverses an array. PHP's array_reverse() allows you to preserve the old keys, but that doesn't work in python. 
+    """
+    return list(reversed(l))
+
+def array_map(func, l):
+    return list(map(func, l))
+
+def array_diff(l, *other_arrays):
+    """
+    Removes all elements from `l` that are present in at least one of the arrays in `other_arrays`. 
+    """
+    for a in other_arrays: 
+        l = [x for x in l if x not in a]
+    return l
