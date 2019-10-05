@@ -17,7 +17,7 @@ def is_dir(dir):
     try:
         from os import scandir as sd
     except:
-        print("")        
+        print("")
     try:
         sd(str(dir)).__next__()
         return True
@@ -25,6 +25,13 @@ def is_dir(dir):
         return False
 
 def file_exists(path):
+    try:
+        import os.path
+        return os.path.isfile(path)
+    except:
+        return False
+
+def is_readable(path):
     try:
         open(str(path))
         return True
@@ -40,7 +47,7 @@ def date(format):
         return strftime(str(format),gmtime())
     except:
         print()
-        
+
 def time():
     try:
         from time import time
@@ -48,8 +55,9 @@ def time():
         print()
     return time()
 
-def explode(delimiter,string):
-    return str(string).split(delimiter)
+def explode(delimiter,string,limit):
+    # Python counts how many splits, PHP counts the final array count, so we - 1
+    return str(string).split(delimiter, limit - 1)
 
 def implode(glue,pieces):
     return glue.join(pieces)
@@ -74,8 +82,11 @@ def stripos(string, keyword):
     return str(string).find(keyword)
 
 def die(string):
-    raise Warning (string)
-    
+    import sys
+    sys.exit(string)
+
+exit = die
+
 def count(var):
     return len(var)
 
@@ -84,7 +95,7 @@ def file_get_contents(fileName):
         return open(fileName,'r').read()
     except:
         raise FileNotFoundError ("File Not Found")
-    
+
 def file_put_contents(fileName,Data):
     try:
         open(fileName,'w').write(Data)
@@ -101,6 +112,20 @@ def empty(var):
     if var not in [[],[[]],{},(),'',None]:
         return False
     return True
+
+def is_int(var):
+    return isinstance(var, int)
+
+def is_float(var):
+    return isinstance(var, float)
+
+is_double = is_float
+
+def is_array(var):
+    return isinstance(var, arr)
+
+def is_string(var):
+    return isinstance(var, str)
 
 def echo(val):
     print(val)
@@ -120,7 +145,7 @@ def json_encode(array):
         return json.dumps(array)
     except:
         raise ValueError ("Failed To Encode Json")
-    
+
 def json_decode(jsonEn):
     try:
         import json
@@ -206,7 +231,7 @@ def bin2hex(text):
 def decbin(num):
     """
     Converts a decimal number(num) to binary
-    
+
     Parameters
     ----------
     num : int or string
@@ -223,7 +248,7 @@ def decbin(num):
 def decoct():
     """
     Converts a decimal number(num) to octal i.e. base 8.
-    
+
     Parameters
     ----------
     num : int or string
@@ -240,7 +265,7 @@ def decoct():
 def dechex(num):
     """
     Converts a decimal number(num) to hexadecimal ie base 16
-    
+
     Parameters
     ----------
     num : int or string
